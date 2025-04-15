@@ -24,9 +24,34 @@
       border-radius: 1rem;
     }
 
-    .hover-shadow:hover {
+    .border-primary:hover {
       transform: translateY(-8px);
-      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1rem 2rem rgba(19, 19, 201, 0.1);
+    }
+
+    .border-secondary:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 1rem 2rem rgba(239, 63, 116, 0.1);
+    }
+
+    .border-success:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 1rem 2rem rgba(99, 155, 16, 0.1);
+    }
+
+    .border-warning:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 1rem 2rem rgba(247, 247, 7, 0.1);
+    }
+
+    .border-danger:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 1rem 2rem rgba(219, 7, 14, 0.07);
+    }
+
+    .border-info:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 1rem 2rem rgba(129, 129, 227, 0.1);
     }
 
     .card-icon {
@@ -62,13 +87,13 @@
   </header>
 
   <!-- Menu Cards -->
-  <main class="container my-5">
+  <main class="container my-4">
     <div class="row g-4 justify-content-center">
 
       <!-- Tambah Pelanggan -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="tambah_pelanggan.php" class="text-decoration-none text-dark">
-          <div class="card text-center hover-shadow">
+          <div class="card text-center hover-shadow border border-primary">
             <i class="bi bi-person-plus-fill text-primary card-icon"></i>
             <div class="card-title">Tambah Pelanggan</div>
           </div>
@@ -78,7 +103,7 @@
       <!-- Tambah Produk -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="tambah_produk.php" class="text-decoration-none text-dark">
-          <div class="card text-center hover-shadow">
+          <div class="card text-center hover-shadow border border-success">
             <i class="bi bi-box-seam text-success card-icon"></i>
             <div class="card-title">Tambah Produk</div>
           </div>
@@ -88,7 +113,7 @@
       <!-- Update Produk -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="update_produk.php" class="text-decoration-none text-dark">
-          <div class="card text-center hover-shadow">
+          <div class="card text-center hover-shadow border border-warning">
             <i class="bi bi-pencil-square text-warning card-icon"></i>
             <div class="card-title">Update Produk</div>
           </div>
@@ -98,7 +123,7 @@
       <!-- Penjualan -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="penjualan.php" class="text-decoration-none text-dark">
-          <div class="card text-center hover-shadow">
+          <div class="card text-center hover-shadow border border-danger">
             <i class="bi bi-cart text-danger card-icon"></i>
             <div class="card-title">Penjualan</div>
           </div>
@@ -108,7 +133,7 @@
       <!-- Daftar Produk -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="tampil_produk.php" class="text-decoration-none text-dark">
-          <div class="card text-center hover-shadow">
+          <div class="card text-center hover-shadow border border-info">
             <i class="bi bi-card-list text-info card-icon"></i>
             <div class="card-title">Daftar Produk</div>
           </div>
@@ -118,7 +143,7 @@
       <!-- Daftar Pelanggan -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="tampil_pelanggan.php" class="text-decoration-none text-dark">
-          <div class="card text-center hover-shadow">
+          <div class="card text-center hover-shadow border border-secondary">
             <i class="bi bi-people-fill text-secondary card-icon"></i>
             <div class="card-title">Daftar Pelanggan</div>
           </div>
@@ -128,7 +153,7 @@
       <!-- Daftar Penjualan -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="tampil_penjualan.php" class="text-decoration-none text-dark">
-          <div class="card text-center hover-shadow">
+          <div class="card text-center hover-shadow border border-danger">
             <i class="bi bi-receipt-cutoff text-danger card-icon"></i>
             <div class="card-title">Daftar Penjualan</div>
           </div>

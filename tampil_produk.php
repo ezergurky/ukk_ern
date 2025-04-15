@@ -27,33 +27,39 @@
 <body class="bg-light">
 <div class="container mt-4">
         <div class="row p-2 bg-light shadow-lg justify-content-center">
-            <h4 class="text-info text-center"><i class="bi bi-box-seam-fill me-2"></i>Daftar Produk</h4>
+            <div class="text-center">
+                <i class="bi bi-box-seam-fill text-info fs-1"></i>
+                <h4 class="text-info fw-bold">Daftar Produk</h4>
+            </div>
             <div class="mt-4 col-md-8">
-                <table class="table table-striped table-bordered shadow-sm mb-4 rounded">
-                    <thead class="table-primary">
-                        <th>No</th>
-                        <th>Nama Produk</th>
-                        <th>Harga</th>
-                        <th>Stok</th>
-                        <th id="aksi">Aksi</th>
-                    </thead>
-                    <tbody>
-                        <?php
-                            $result = $koneksi->query("SELECT * FROM produk");
-                            $no = 1;
+                <div class="rounded-3 shadow-sm overflow-hidden mb-4">
+                    <table class="table table-striped table-bordered mb-0">
+                        <thead class="table-primary">
+                            <th>No</th>
+                            <th>Nama Produk</th>
+                            <th>Harga</th>
+                            <th>Stok</th>
+                            <th id="aksi">Aksi</th>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $result = $koneksi->query("SELECT * FROM produk");
+                                $no = 1;
 
-                            while($row = mysqli_fetch_assoc($result)):
-                        ?>
-                        <tr>
-                            <td class="fw-semibold"><?= $no++ ?>.</td>
-                            <td><?= $row["NamaProduk"] ?></td>
-                            <td>Rp. <?= number_format($row["Harga"], 2, ',', '.') ?></td>
-                            <td><?= $row["Stok"] ?></td>
-                            <td><a href="?delete=<?= $row["ProdukID"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin menghapus produk ini?');"><i class="bi bi-trash me-2"></i>Delete</a></td>
-                        </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
+                                while($row = mysqli_fetch_assoc($result)):
+                            ?>
+                            <tr>
+                                <td class="fw-semibold"><?= $no++ ?>.</td>
+                                <td><?= $row["NamaProduk"] ?></td>
+                                <td>Rp. <?= number_format($row["Harga"], 2, ',', '.') ?></td>
+                                <td><?= $row["Stok"] ?></td>
+                                <td><a href="?delete=<?= $row["ProdukID"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin menghapus produk ini?');"><i class="bi bi-trash me-2"></i>Delete</a></td>
+                            </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                </div>
+                
 
                 <div class="justify-content-center mb-3">
                     <a class="btn btn-outline-primary mb-3 w-100" onclick="window.print()"><i class="bi bi-printer-fill me-2"></i>Cetak Daftar</a>

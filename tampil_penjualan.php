@@ -39,66 +39,71 @@
 <body class="bg-light">
 <div class="container mt-4">
         <div class="row p-2 bg-light shadow-lg justify-content-center">
-            <h4 class="text-danger text-center"><i class="bi bi-receipt-cutoff me-2"></i>Daftar Penjualan</h4>
+            <div class="text-center">
+                <i class="bi bi-receipt-cutoff text-danger fs-1"></i>
+                <h4 class="text-danger fw-bold">Daftar Penjualan</h4>
+            </div>
             <div class="mt-4 col-md-8">
-                <table class="table table-striped shadow-sm mb-4 rounded">
-                    <thead class="table-primary">
-                        <th>No</th>
-                        <th>Nama Pelanggan</th>
-                        <th>Nama Produk</th>
-                        <th>Jumlah Produk</th>
-                        <th>Total Harga</th>
-                        <th id="aksi">Aksi</th>
-                    </thead>
-                    <tbody>
-                        <?php
-                            $no = 1;
+                <div class="rounded-3 shadow-sm overflow-hidden mb-4">
+                    <table class="table table-striped mb-0">
+                        <thead class="table-primary">
+                            <th>No</th>
+                            <th>Nama Pelanggan</th>
+                            <th>Nama Produk</th>
+                            <th>Jumlah Produk</th>
+                            <th>Total Harga</th>
+                            <th id="aksi">Aksi</th>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $no = 1;
 
-                            $query = "
-                            SELECT
-                                p.PenjualanID,
-                                p.TanggalPenjualan,
-                                pl.NamaPelanggan,
-                                pr.NamaProduk,
-                                dp.JumlahProduk,
-                                dp.Subtotal
-                            FROM penjualan p
-                            JOIN pelanggan pl ON p.PelangganID = pl.PelangganID
-                            JOIN detailpenjualan dp ON p.PenjualanID = dp.PenjualanID
-                            JOIN produk pr ON dp.ProdukID = pr.ProdukID
-                            ORDER BY p.TanggalPenjualan DESC
-                            ";
+                                $query = "
+                                SELECT
+                                    p.PenjualanID,
+                                    p.TanggalPenjualan,
+                                    pl.NamaPelanggan,
+                                    pr.NamaProduk,
+                                    dp.JumlahProduk,
+                                    dp.Subtotal
+                                FROM penjualan p
+                                JOIN pelanggan pl ON p.PelangganID = pl.PelangganID
+                                JOIN detailpenjualan dp ON p.PenjualanID = dp.PenjualanID
+                                JOIN produk pr ON dp.ProdukID = pr.ProdukID
+                                ORDER BY p.TanggalPenjualan DESC
+                                ";
 
-                            $result = $koneksi->query($query);
-                            $row2 = $koneksi->query("SELECT * FROM penjualan")->fetch_assoc();
+                                $result = $koneksi->query($query);
+                                $row2 = $koneksi->query("SELECT * FROM penjualan")->fetch_assoc();
 
-                            if($result->num_rows > 0):
-                                while($row = $result->fetch_assoc()):
-                        ?>
-                        <tr>
-                            <td class="fw-semibold"><?= $no++ ?>.</td>
-                            <td><?= $row["NamaPelanggan"] ?></td>
-                            <td><?= $row["NamaProduk"] ?></td>
-                            <td><?= $row["JumlahProduk"] ?></td>
-                            <td>Rp. <?= number_format($row["Subtotal"], 2, ',', '.') ?></td>
-                            <td><a href="?delete=<?= $row2["PenjualanID"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin menghapus penjualan ini?');"><i class="bi bi-trash me-2"></i>Delete</a></td>
-                        </tr>
-                        <?php endwhile; else: ?>
-                            <tr>
-                                <td colspan="6" class="text-center text-muted">Tidak ada penjualan yang tersedia</td>
-                            </tr>
-                        <?php endif; ?>
-                        <tr>
-                            <td class="table-secondary text-end fw-semibold" colspan="4">Sub Total:</td>
-                            <?php 
-                                $query = "SELECT SUM(Harga) AS TotalHarga FROM produk";
-                                $subTotal = mysqli_query($koneksi, $query);
-                                $row = mysqli_fetch_assoc($subTotal);
+                                if($result->num_rows > 0):
+                                    while($row = $result->fetch_assoc()):
                             ?>
-                            <td>Rp. <?= number_format($row["TotalHarga"], 2, ',', '.') ?></td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <tr>
+                                <td class="fw-semibold"><?= $no++ ?>.</td>
+                                <td><?= $row["NamaPelanggan"] ?></td>
+                                <td><?= $row["NamaProduk"] ?></td>
+                                <td><?= $row["JumlahProduk"] ?></td>
+                                <td>Rp. <?= number_format($row["Subtotal"], 2, ',', '.') ?></td>
+                                <td><a href="?delete=<?= $row2["PenjualanID"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin menghapus penjualan ini?');"><i class="bi bi-trash me-2"></i>Delete</a></td>
+                            </tr>
+                            <?php endwhile; else: ?>
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted">Tidak ada penjualan yang tersedia</td>
+                                </tr>
+                            <?php endif; ?>
+                            <tr>
+                                <td class="table-secondary text-end fw-semibold" colspan="4">Sub Total:</td>
+                                <?php 
+                                    $query = "SELECT SUM(Subtotal) AS TotalHarga FROM detailpenjualan";
+                                    $subTotal = mysqli_query($koneksi, $query);
+                                    $row = mysqli_fetch_assoc($subTotal);
+                                ?>
+                                <td class="fw-semibold">Rp. <?= number_format($row["TotalHarga"], 2, ',', '.') ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <h2 class="text-center">&copy UKK RPL 2025</h2>
 

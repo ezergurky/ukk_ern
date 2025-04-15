@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <div class="container mt-4">
+    <div class="container mt-2">
         <div class="row justify-content-center">
             <form action="proses_pelanggan.php" method="post" class="mt-4 p-4 col-md-6 shadow-lg bg-light">
                 <div class="text-center mb-4">
@@ -17,16 +17,16 @@
                     <p class="text-muted small">Isi data pelanggan dengan lengkap</p>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Nama Pelanggan</label>
-                    <input type="text" name="nama" class="form-control" placeholder="Masukkan nama pelanggan">
+                    <label class="form-label fw-semibold">Nama Pelanggan</label>
+                    <input type="text" name="nama" class="form-control rounded-4" placeholder="Masukkan nama pelanggan" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Alamat</label>
-                    <input type="text" name="alamat" class="form-control" placeholder="Masukkan alamat pelanggan">
+                    <label class="form-label fw-semibold">Alamat</label>
+                    <input type="text" name="alamat" class="form-control rounded-4" placeholder="Masukkan alamat pelanggan">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">No Telepon</label>
-                    <input type="number" name="notelp" class="form-control" placeholder="081234567890">
+                    <label class="form-label fw-semibold">No Telepon</label>
+                    <input type="number" name="notelp" class="form-control rounded-4" placeholder="081234567890">
                 </div>
                 <div class="form-text text-muted mb-3">
                     <i class="bi bi-info-circle-fill me-1 text-warning"></i>Pastikan data yang anda masukkan sudah benar
@@ -38,7 +38,7 @@
                 </div>
                 <div class="d-flex gap-2">
                     <a href="index.php" class="btn btn-outline-success w-100"><i class="bi bi-house-door-fill me-2"></i>Dashboard</a>
-                    <a href="daftar_pelanggan.php" class="btn btn-outline-danger w-100"><i class="bi bi-people-fill me-2"></i>Daftar Pelanggan</a>
+                    <a href="tampil_pelanggan.php" class="btn btn-outline-danger w-100"><i class="bi bi-people-fill me-2"></i>Daftar Pelanggan</a>
                 </div>
             </form>
         </div>
