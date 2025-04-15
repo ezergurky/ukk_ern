@@ -24,7 +24,7 @@
                     <label class="form-label fw-semibold">Harga</label>
                     <div class="input-group">
                         <span class="input-group-text">Rp.</span>
-                        <input type="number" class="form-control rounded-4" name="harga" placeholder="Masukkan harga" require>
+                        <input type="number" class="form-control" name="harga" placeholder="Masukkan harga" require>
                     </div>
                 </div>
                 <div class="mb-3">
